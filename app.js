@@ -4,25 +4,27 @@ const app = express()
 const hostname = '0.0.0.0'    // allows access from remote computers
 const port = 3002
 
+const path = require('path');
+//const router = express.Router();
+
+app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/images'));
+console.log(path);
+console.log(__dirname);
+
 app.get('/', function (req, res) {
-  res.send('Welcome home!')
+  res.sendFile(path.join(__dirname+'/index.html'));
 })
 
-app.get('/hello', (req, res) => {
-  res.send('Hello World!')
+
+app.get('/contact',  (req, res) =>{
+  res.sendFile(path.join(__dirname+'/contact.html'));
 })
 
-app.get('/big',  (req, res) =>{
-  res.send('<h1>Hello World!</h1>')
+app.get('/calc',  (req, res) =>{
+  res.sendFile(path.join(__dirname+'/calc.html'));
 })
 
-app.get('/greeting/:id',  (req, res) =>{
-  res.send('Hello! The id was ' + req.params.id)
-})
-
-app.get('/yo/:buddy',  (req, res) =>{
-  res.send('<h1>Yo, ' + req.params.buddy + '!</h1>')
-})
 
 // handle non-existant routes
 app.use((req, res, next) => {
