@@ -17,13 +17,7 @@ app.get('/', function (req, res) {
 })
 
 
-app.get('/contact',  (req, res) =>{
-  res.sendFile(path.join(__dirname+'/contact.html'));
-})
 
-app.get('/calc',  (req, res) =>{
-  res.sendFile(path.join(__dirname+'/calc.html'));
-})
 
 
 // handle non-existant routes
